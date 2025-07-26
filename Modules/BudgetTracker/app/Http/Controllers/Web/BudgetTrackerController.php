@@ -57,14 +57,28 @@ class BudgetTrackerController extends Controller
 
     public function edit($type, $id)
     {
+        $user = auth()->user();
+        $budget = DailyBudgetItem::with(['category', 'budget'])->findOrFail($id);
+
+        if($user->id != $budget->budget?->user_id) {
+            return abort(403);
+        }
+
         return view('budgets.edit', [
-            'budget'     => DailyBudgetItem::with(['category'])->findOrFail($id),
+            'budget'     => $budget,
             'categories' => BudgetTrackerCategory::where('type', $type)->get(),
         ]);
     }
 
     public function update(BudgetTrackerBudgetRequest $request, $id)
     {
+        $user = auth()->user();
+        $budget = DailyBudgetItem::with(['category', 'budget'])->findOrFail($id);
+
+        if($user->id != $budget->budget?->user_id) {
+            return abort(403);
+        }
+
         $item = $this->budgetTrackerService->findById($id);
         $this->budgetTrackerService->update($item, $request->all());
 
@@ -76,6 +90,13 @@ class BudgetTrackerController extends Controller
      */
     public function destroy($id)
     {
+        $user = auth()->user();
+        $budget = DailyBudgetItem::with(['category', 'budget'])->findOrFail($id);
+
+        if($user->id != $budget->budget?->user_id) {
+            return abort(403);
+        }
+        
         $item = $this->budgetTrackerService->findById($id);
         $this->budgetTrackerService->delete($item);
 
