@@ -19,7 +19,7 @@
                 <div class="card pt-5 px-3">
                     <div class="d-flex justify-content-between">
                         <p>
-                            This month income: <span
+                            <h3>This month</h3> income: <span
                                 class="text-success">{{ App\MoneyFormatter::format_money($current_month_recent_budgets['total_income']) }}</span>,
                             expense: <span
                                 class="text-danger">{{ App\MoneyFormatter::format_money($current_month_recent_budgets['total_expense']) }}
@@ -66,7 +66,7 @@
             <div class="col-md-12 col-lg-6">
                 <div class="card pt-5 px-3">
                     <div class="card-header">
-                        This Year
+                        <h3>This Year</h3>
                     </div>
                     <div class="card-content">
                         <canvas id="income-expense-multi-line" style="height: 350px; width: 100%;"></canvas>
