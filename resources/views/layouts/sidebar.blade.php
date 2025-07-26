@@ -189,7 +189,7 @@
                         </div>
                     </div>
                     <div class="menu-item menu-accordion">
-                        <a class=" menu-link" href="{{ route('users.index') }}">
+                        <a class=" menu-link {{ request()->route()->getName() === 'users.index' ? 'active' : '' }}" href="{{ route('users.index') }}">
                             <span class="menu-icon">
                                 <!--begin::Svg Icon | path: icons/duotune/general/gen019.svg-->
                                 <span class="svg-icon svg-icon-2">

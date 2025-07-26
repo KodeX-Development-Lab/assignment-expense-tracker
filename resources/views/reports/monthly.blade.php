@@ -64,7 +64,7 @@
 
                                 </div>
                                 <div class="col-2">{{ App\MoneyFormatter::format_money($item['amount']) }} </div>
-                                <div class="col-2">{{ App\MoneyFormatter::format_money($item['percentage']) }} %</div>
+                                <div class="col-2">{{ $item['percentage'] }} %</div>
                             </div>
                             <hr>
                         @endforeach
