@@ -56,7 +56,7 @@
             <div class="col-12 col-md-6">
                 <div class="card pt-5 px-3">
                     <div class="card-header">
-                        Income
+                        <h3>Income</h3>
                     </div>
                     <div class="mb-5">
                         <canvas id="income-category-pie"></canvas>
@@ -84,7 +84,7 @@
             <div class="col-12 col-md-6">
                 <div class="card pt-5 px-3">
                     <div class="card-header">
-                        Expense
+                        <h3>Expense</h3>
                     </div>
                     <div class="mb-5">
                         <canvas id="expense-category-pie"></canvas>
