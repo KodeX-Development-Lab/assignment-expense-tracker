@@ -1,5 +1,12 @@
 # Project Setup Guide
 
+## 📋 Prerequisites
+
+- PHP ≥ 8.2
+- Composer
+- MySQL ≥ 8.0
+- Git (optional)
+
 ## Cloning the Repository
 
 1. Open a terminal or command prompt.
