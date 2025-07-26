@@ -1,0 +1,11 @@
+{
+    "name": "BudgetTracker",
+    "alias": "budgettracker",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\BudgetTracker\\Providers\\BudgetTrackerServiceProvider"
+    ],
+    "files": []
+}

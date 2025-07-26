@@ -1,0 +1,431 @@
+@media (min-width: 1400px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        /* max-width: 1920px; */
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1500px) {
+    .publish-change-to {
+        width : 100%;
+        margin-bottom: 10px;
+    }
+
+    .publish-status {
+        width: 100%;
+    }
+
+    .publish-on{
+        width : 100%;
+    }
+
+    .publish-date{
+        width: 100%;
+    }
+}
+
+/* @media (min-width: 930px) and (max-width: 991px) {
+    .filter-section {
+        min-width: 50% !important;
+    }
+} */
+
+@media (min-width: 1225px) and (max-width: 1300px) {
+    .filter-section {
+        min-width: 50% !important;
+    }
+}
+
+@media (min-width: 930px) and (max-width: 1070px) {
+    .filter-section {
+        min-width: 50% !important;
+    }
+}
+
+
+@media (min-width: 1492px) and (max-width: 1550px) {
+    .filter-section {
+        max-width: 100% !important;
+    }
+}
+
+/* #showVariableproduct{
+    display: none;
+} */
+/* #change-colour {
+    display: none;
+} */
+.clr-field{
+    width: 100%;
+}
+#user_filter {
+    float: left;
+}
+
+#user_length {
+    float: right;
+}
+
+#DataTables_Table_0_filter {
+    float: left;
+}
+
+#DataTables_Table_0_length {
+    float: right;
+}
+
+.filter-style {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filter-section {
+    display: flex;
+    align-items: center;
+    max-width: 245px;
+}
+
+.schedule-date {
+    max-width: 100%;
+    height: 35px;
+    font-size: 10px;
+}
+
+.published-date {
+    max-width: 100%;
+    font-size: 10px;
+}
+/* Begin:Quills editor */
+.editor.ql-container.ql-snow, #home-editor, #about-us-editor, #service-editor {
+    height: 300px;
+    border-radius: 0 0 10px 10px;
+    overflow-y: scroll;
+}
+
+#home-meta-editor {
+    height: 150px;
+    border-radius: 0 0 10px 10px;
+    overflow-y: scroll;
+}
+
+div.ql-html-buttonGroup {
+    position: absolute;
+    bottom: -20px;
+    transform: scale(1.5);
+    left: calc(50% - 60px);
+}
+
+.ql-html-buttonCancel {
+    margin-right: 0 !important;
+    color: #000;
+    background-color: #e4e6ef;
+    border-radius: 5px;
+    font-size: 10px;
+    padding: 3px 8px 3px 8px;
+}
+
+.ql-html-buttonOk {
+    background-color: #009ef7;
+    font-size: 10px;
+    color: #fff;
+    padding: 3px 8px 3px 8px;
+    border-radius: 5px;
+}
+
+.ql-tooltip.ql-editing {
+    left: 0 !important;
+    overflow: auto !important;
+    top: 50px !important;
+}
+
+.ql-formats button {
+    font-size: 15px;
+}
+
+.ql-html-popupTitle {
+    margin-bottom: 15px !important;
+}
+
+.ql-toolbar.ql-snow .ql-picker .ql-fill,
+.ql-toolbar.ql-snow .ql-picker .ql-stroke,
+.ql-toolbar.ql-snow button .ql-fill,
+.ql-toolbar.ql-snow button .ql-stroke {
+    stroke: #000;
+}
+
+.ql-snow .ql-picker .ql-picker-label {
+    color: #000000;
+}
+
+.ql-formats {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding-top: 10px;
+    height: 45px;
+    border-radius: 6px;
+}
+
+div.ql-html-textArea {
+    background: #fff;
+    position: absolute;
+    left: 15px;
+    width: calc(100% - 30px);
+    height: calc(100% - 80px) !important;
+}
+/* End:Quills editor */
+.aside-dark .menu .menu-item.here>.menu-link {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.aside.aside-dark .aside-logo {
+    background-color: #ffffff;
+}
+
+.aside-menu {
+    background-color: #111C41;
+}
+
+.aside-dark .menu .menu-item .menu-link.active {
+    background-color: #111C41;
+}
+
+.aside-dark .menu .menu-item.hover:not(.here)>.menu-link:not(.disabled):not(.active):not(.here),
+.aside-dark .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.aside-dark .menu .menu-item .menu-link .menu-title {
+    color: #ffffff;
+}
+
+.aside-dark .menu .menu-item .menu-link.active .menu-title {
+    color: #88A9FF;
+}
+
+.aside-dark .menu .menu-item .menu-section {
+    color:#7399ED !important;
+}
+
+.aside-dark .menu .menu-item .menu-link .menu-icon,
+.aside-dark .menu .menu-item .menu-link .menu-icon .svg-icon,
+.aside-dark .menu .menu-item .menu-link .menu-icon i {
+    color: #ffffff !important;
+}
+
+.aside-dark .menu .menu-item.hover:not(.here)>.menu-link:not(.disabled):not(.active):not(.here) .menu-bullet .bullet,
+.aside-dark .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-bullet .bullet {
+    background-color: #111C41;
+}
+
+#holder-category-icon img,
+#holder-mb-banner-image img,
+#holder-footer-icon img,
+#holder-blog-image img,
+#holder-banner-image img,
+#holder-video-sub-image img,
+#holder-graph-image img,
+#holder-general-section-image-one img,
+#holder-general-section-image-two img,
+#holder-general-section-image-three img,
+#holder-general-section-image-four img,
+#holder-meta-image img,
+#holder-go-image img,
+#holder-category-image img{
+    width: 100%;
+    height: 20rem !important;
+}
+
+.holder-artwork-confirm-image img{
+    /* width: 300px !important; */
+    height: 300px !important;
+}
+
+.holder-artwork-confirm-image custom-image-input{
+    width: 300px !important;
+    height: 300px !important;
+}
+
+#holder-feature-image img,
+#holder-default-image img {
+    width: 100%;
+    height: 12rem !important;
+}
+
+.help-block{
+    width: 100%;
+    margin-top: .5rem;
+    font-size: .925rem;
+    color: #f1416c;
+}
+
+.sticky-sidebar{
+    position: sticky !important;
+    bottom: 0;
+    background-color: #111C41 !important;
+}
+
+.sticky-header {
+    position: sticky !important;
+    right: 0;
+}
+
+.sticky {
+    position: sticky !important;
+    right: 0;
+    background-color: #fff !important;
+}
+
+.sourcing-form img {
+    margin: 5px;
+}
+/* lfm */
+.dragGroup{
+    padding: 0px;
+  }
+  .draggable {
+    will-change: transform;
+    font-family: "Raleway", sans-serif;
+    font-weight: 800;
+    list-style-type: none;
+    background-color: white;
+    color: #212121;
+    cursor: move;
+    transition: all 200ms;
+    user-select: none;
+    position: relative;
+  }
+
+  .draggable:hover:after {
+    content: 'drag me';
+    right: 7px;
+    font-size: 10px;
+    position: absolute;
+    cursor: pointer;
+    line-height: 5;
+    transition: all 200ms;
+    transition-timing-function: cubic-bezier(0.48, 0.72, 0.62, 1.5);
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  .dragIcon {
+    cursor: pointer;
+  }
+  .lfmimage-container{
+    border: 1px solid #ccc;
+  }
+  #holder3{
+    display: grid;
+    grid-gap: 3px;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .lfmimage{
+    width: 100%;
+    height: 5rem;
+  }
+
+  #holder3 img {
+    width: 100%;
+    height: 10rem;
+  }
+
+  .grid-container {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .sim-grid-container {
+    /* height: 90vh; */
+    margin: 2rem;
+    display: grid;
+    /* grid-template-columns: 1fr 1fr 1fr; */
+    grid-template-columns: 1fr repeat(2, 1fr);
+    /* grid-template-rows: 1fr 1fr 1fr; */
+  }
+
+  /* .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+  } */
+  .largeImage{
+    width:500px;
+  }
+  .backdrop{
+    
+    display: none;
+    filter: alpha(opacity=0);
+    height: 100%;
+    left: 0px;
+    opacity: .0;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: 50;
+  }
+  
+  .box{
+    display: none;
+    height: 300px;
+    left: 69%;
+    margin-left: -210px;
+    opacity: 0;
+    position: fixed;
+    top: 30%;
+    z-index: 51;
+    
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+  }
+  
+  .close{
+   
+    cursor: pointer;
+    float: left;
+    font-size: 32px;
+    margin: 10px;
+    position: absolute;
+  }
+  
+  .clear{
+    clear: both;
+  }
+
+  .accordion-collapse.collapse.show{
+    overflow: scroll;
+    height: 300px !important;
+  }
+
+
+table.dataTable thead .sorting:after {
+    color: #b5b5c3 !important;
+    opacity: 0.5 !important;
+/* sort */
+}
+
+table.dataTable thead .sorting:before {
+    color: #b5b5c3 !important;
+    opacity: 0.5 !important;
+/* sort */
+}
+
+table.dataTable thead .sorting_asc:after {
+    color: #b5b5c3 !important;
+    opacity: 0.5 !important;
+}
+
+table.dataTable thead .sorting_desc:after {
+    color: #b5b5c3 !important;
+    opacity: 0.5 !important;
+}
