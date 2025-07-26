@@ -104,7 +104,7 @@ class BudgetTrackerRepository
             'category_id'  => $data['category_id'],
             'amount'       => $data['amount'],
             'remark'       => $data['remark'] ?? null,
-            'processed_at' => Carbon::parse($data['processed_at']),
+            'processed_at' => $date->format('Y-m-d H:i:s'),
         ]);
     }
 
@@ -123,7 +123,7 @@ class BudgetTrackerRepository
             'category_id'  => $data['category_id'] ?? $item->category_id,
             'amount'       => $data['amount'] ?? $item->amount,
             'remark'       => $data['remark'] ?? $item->remark,
-            'processed_at' => isset($data['processed_at']) ? Carbon::parse($data['processed_at']) : $item->processed_at,
+            'processed_at' => $date ? $date->format('Y-m-d H:i:s') : $item->processed_at,
         ]);
 
         return $item;

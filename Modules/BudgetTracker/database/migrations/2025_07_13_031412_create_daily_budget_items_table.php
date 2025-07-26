@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->double('amount');
             $table->text('remark')->nullable();
-            $table->timestamp('processed_at');
+            $table->dateTime('processed_at');
             $table->timestamps();
         });
     }

@@ -60,6 +60,25 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="filter-section">
+                                    <label class="fs-7 fw-bold">Start Date</label>
+                                    <div class="card-toolbar mx-4">
+                                        <div class="d-flex justify-content-center min-w-150px">
+                                            <input type="date" name="start_date" id="start_date"
+                                                value="{{ $start_date }}"
+                                                class="form-control form-control-solid flatpickr-input" placeholder="Start">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filter-section">
+                                    <label class="fs-7 fw-bold">End Date</label>
+                                    <div class="card-toolbar mx-4">
+                                        <div class="d-flex justify-content-center min-w-150px">
+                                            <input type="date" name="end_date" id="end_date" value="{{ $end_date }}"
+                                                class="form-control form-control-solid flatpickr-input" placeholder="End">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-toolbar">
                                 <!--call template to get table display-->
@@ -86,7 +105,7 @@
                                     @foreach ($budgets as $item)
                                         <tr>
                                             <td style="padding-left: 10px;">{{ $loop->iteration }}</td>
-                                            <td>{{ Carbon\Carbon::parse($item->name)->format('d-m-Y g:i A') }}</td>
+                                            <td>{{ Carbon\Carbon::parse($item->processed_at)->format('d-m-Y g:i A') }}</td>
                                             <td>{{ $item->category?->name }}</td>
                                             <td><span
                                                     class="badge badge-{{ $item->type == 'income' ? 'success' : 'danger' }}">{{ $item->type }}</span>
@@ -103,7 +122,8 @@
                                                     </button>
                                                 </a>
 
-                                               <form method="POST" action="{{ route('budgets.destroy', ['budget' => $item->id]) }}"
+                                                <form method="POST"
+                                                    action="{{ route('budgets.destroy', ['budget' => $item->id]) }}"
                                                     class="deleteForm" style="display: inline;">
                                                     <input name="_method" type="hidden" value="DELETE">
                                                     <input name="_token" type="hidden" value="{{ csrf_token() }}">

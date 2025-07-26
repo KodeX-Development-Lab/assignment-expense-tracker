@@ -41,10 +41,9 @@
                                         <div class="list-title">
                                             <label for="processed_at" class="form-label">Date</label>
                                         </div>
-                                        <input type="text"
-                                            class="py-[14px] px-6 rounded-lg text-14 md:text-16 font-medium font-primary text-darkgray w-full"
-                                            placeholder="YYYY-MM-DD" name="processed_at" value="{{ old('processed_at') }}"
-                                            id="pg-datepicker">
+                                        <input type="date" name="processed_at" id="processed_at"
+                                            value="{{ old('processed_at') }}"
+                                            class="form-control form-control-solid flatpickr-input" placeholder="Date">
                                         @if ($errors->has('processed_at'))
                                             <div class="" style="color: red;">{{ $errors->first('processed_at') }}
                                             </div>
@@ -52,6 +51,7 @@
                                     </div>
                                 </div>
                             </div>
+
 
                             <div class="row mb-3">
                                 <div class="col-md-12">
