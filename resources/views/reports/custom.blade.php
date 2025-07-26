@@ -11,6 +11,37 @@
                         </h3>
 
                     </div>
+                    <form method="get" action="{{ route('budget-reports.custom') }}" id="search-filter-form"
+                        class="filter-clear-form">
+                        <div class="card-header border-0">
+                            <div class="card-title filter-style">
+                                <div class="filter-section">
+                                    <label class="fs-7 fw-bold">Start Date</label>
+                                    <div class="card-toolbar mx-4">
+                                        <div class="d-flex justify-content-center min-w-150px">
+                                            <input type="date" name="start_date" id="start_date"
+                                                value="{{ request('start_date') ?? '' }}"
+                                                class="form-control form-control-solid flatpickr-input" placeholder="Start">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="filter-section">
+                                    <label class="fs-7 fw-bold">End Date</label>
+                                    <div class="card-toolbar mx-4">
+                                        <div class="d-flex justify-content-center min-w-150px">
+                                            <input type="date" name="end_date" id="end_date"
+                                                value="{{ request('end_date') ?? '' }}"
+                                                class="form-control form-control-solid flatpickr-input" placeholder="End">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-toolbar">
+                                <!--call template to get table display-->
+                                <x-table-display />
+                            </div>
+                        </div>
+                    </form>
                     <div class="card-content">
                         <x-budget-brief :brief="$brief" />
                     </div>
@@ -73,6 +104,16 @@
 @endsection
 @push('scripts')
     <script>
+        $(document).ready(function() {
+            $('#start_date').on('change', function() {
+                $('#search-filter-form').submit();
+            });
+
+            $('#end_date').on('change', function() {
+                $('#search-filter-form').submit();
+            })
+        });
+
         const income_categories_items = @json($income_budget_on_categories['items'])
 
         const total_inc_cat_pie_data = {

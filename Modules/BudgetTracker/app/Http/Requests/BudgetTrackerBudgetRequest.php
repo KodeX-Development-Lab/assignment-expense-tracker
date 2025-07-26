@@ -17,7 +17,7 @@ class BudgetTrackerBudgetRequest extends FormRequest
             'category_id'  => 'required|exists:budget_tracker_categories,id',
             'amount'       => 'required|numeric|min:0',
             'remark'       => 'nullable|string|max:1000',
-            // 'processed_at' => 'required|date_format:Y-m-d H:i:s',
+            'processed_at' => 'required',
         ];
     }
 

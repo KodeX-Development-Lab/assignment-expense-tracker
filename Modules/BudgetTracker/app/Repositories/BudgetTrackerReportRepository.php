@@ -8,10 +8,60 @@ use Modules\BudgetTracker\Models\DailyBudgetItem;
 
 class BudgetTrackerReportRepository
 {
-    public function getTotalBriefBudget()
+
+    public function getAllBudgetsBrief()
     {
         $query = DailyBudgetItem::join('daily_budgets', 'daily_budgets.id', 'daily_budget_items.budget_id')
             ->where('daily_budgets.user_id', auth()->id());
+
+        $results = $query->selectRaw('
+        SUM(CASE WHEN type = "income" THEN amount ELSE 0 END) as total_income,
+        SUM(CASE WHEN type = "expense" THEN amount ELSE 0 END) as total_expense
+    ')->first();
+
+        $totalIncome  = (float) ($results->total_income ?? 0);
+        $totalExpense = (float) ($results->total_expense ?? 0);
+
+        $balance         = $totalIncome - $totalExpense;
+        $usagePercentage = $totalIncome > 0 ? ($totalExpense / $totalIncome) * 100 : 0;
+
+        return [
+            'total_income'     => $totalIncome,
+            'total_expense'    => $totalExpense,
+            'balance'          => $balance,
+            'usage_percentage' => $usagePercentage,
+        ];
+    }
+
+    public function getTotalBriefBudget(Request $request)
+    {
+        $query = DailyBudgetItem::join('daily_budgets', 'daily_budgets.id', 'daily_budget_items.budget_id')
+            ->where('daily_budgets.user_id', auth()->id());
+
+        $filterType = $request->filter_type ?? 'monthly';
+        $now        = Carbon::now();
+
+        switch ($filterType) {
+            case 'monthly':
+                $month = $request->month ?? $now->format('m');
+                $year  = $request->year ?? $now->format('Y');
+                $query->whereYear('processed_at', $year)
+                    ->whereMonth('processed_at', $month);
+                break;
+
+            case 'yearly':
+                $year = $request->year ?? $now->format('Y');
+                $query->whereYear('processed_at', $year);
+                break;
+
+            case 'custom':
+                $start_date = $request->start_date ?? Carbon::now()->format('Y-m-d');
+                $end_date   = $request->end_date ?? Carbon::now()->format('Y-m-d');
+
+                $query->whereDate('daily_budget_items.processed_at', '>=', $start_date);
+                $query->whereDate('daily_budget_items.processed_at', '<=', $end_date);
+                break;
+        }
 
         $results = $query->selectRaw('
         SUM(CASE WHEN type = "income" THEN amount ELSE 0 END) as total_income,
@@ -172,7 +222,7 @@ class BudgetTrackerReportRepository
 
             case 'custom':
                 $start_date = $request->start_date ?? Carbon::now()->format('Y-m-d');
-                $end_date = $request->stend_dateart_date ?? Carbon::now()->format('Y-m-d');
+                $end_date   = $request->end_date ?? Carbon::now()->format('Y-m-d');
 
                 $query->whereDate('daily_budget_items.processed_at', '>=', $start_date);
                 $query->whereDate('daily_budget_items.processed_at', '<=', $end_date)

@@ -5,7 +5,8 @@ use Illuminate\Http\Request;
 
 interface BudgetTrackerReportService
 {
-    public function getTotalBriefBudget();
+    public function getAllBudgetsBrief();
+    public function getTotalBriefBudget(Request $request);
     public function getRecentForCurrentMonth();
     public function getMonthlyBudgets(Request $request);
     public function getBriefBudget(Request $request);

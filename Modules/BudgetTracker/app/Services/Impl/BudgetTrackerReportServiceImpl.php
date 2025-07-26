@@ -14,9 +14,15 @@ class BudgetTrackerReportServiceImpl implements BudgetTrackerReportService
         $this->budgetTrackerReportRepository = $budgetTrackerReportRepository;
     }
 
-    public function getTotalBriefBudget()
+    public function getAllBudgetsBrief()
     {
-        return $this->budgetTrackerReportRepository->getTotalBriefBudget();
+        return $this->budgetTrackerReportRepository->getAllBudgetsBrief();
+
+    }
+
+    public function getTotalBriefBudget(Request $request)
+    {
+        return $this->budgetTrackerReportRepository->getTotalBriefBudget($request);
     }
 
     public function getRecentForCurrentMonth()

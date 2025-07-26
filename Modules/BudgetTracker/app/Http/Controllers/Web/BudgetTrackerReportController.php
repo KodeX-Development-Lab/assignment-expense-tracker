@@ -25,7 +25,7 @@ class BudgetTrackerReportController extends Controller
         $summary_budgets = $this->budgetTrackerReportService->getBudgetSummary($request);
 
         return view("dashboard.index", [
-            'brief'                        => $this->budgetTrackerReportService->getTotalBriefBudget(),
+            'brief'                        => $this->budgetTrackerReportService->getAllBudgetsBrief(),
             'current_month_recent_budgets' => $this->budgetTrackerReportService->getRecentForCurrentMonth(),
             'summary_budgets'              => SummaryBudgetResource::collection($summary_budgets),
         ]);
@@ -49,11 +49,11 @@ class BudgetTrackerReportController extends Controller
 
         $summary_budgets = $this->budgetTrackerReportService->getBudgetSummary($request);
 
-        $income_budget_on_categories = $this->budgetTrackerReportService->getBudgetReportOnCategories($request, 'income');  
+        $income_budget_on_categories  = $this->budgetTrackerReportService->getBudgetReportOnCategories($request, 'income');
         $expense_budget_on_categories = $this->budgetTrackerReportService->getBudgetReportOnCategories($request, 'expense');
 
         return view("reports.monthly", [
-            'brief'                        => $this->budgetTrackerReportService->getTotalBriefBudget(),
+            'brief'                        => $this->budgetTrackerReportService->getTotalBriefBudget($request),
             'summary_budgets'              => SummaryBudgetResource::collection($summary_budgets),
             'income_budget_on_categories'  => $income_budget_on_categories,
             'expense_budget_on_categories' => $expense_budget_on_categories,
@@ -68,11 +68,11 @@ class BudgetTrackerReportController extends Controller
 
         $summary_budgets = $this->budgetTrackerReportService->getBudgetSummary($request);
 
-        $income_budget_on_categories = $this->budgetTrackerReportService->getBudgetReportOnCategories($request, 'income');  
+        $income_budget_on_categories  = $this->budgetTrackerReportService->getBudgetReportOnCategories($request, 'income');
         $expense_budget_on_categories = $this->budgetTrackerReportService->getBudgetReportOnCategories($request, 'expense');
 
         return view("reports.yearly", [
-            'brief'                        => $this->budgetTrackerReportService->getTotalBriefBudget(),
+            'brief'                        => $this->budgetTrackerReportService->getTotalBriefBudget($request),
             'summary_budgets'              => SummaryBudgetResource::collection($summary_budgets),
             'income_budget_on_categories'  => $income_budget_on_categories,
             'expense_budget_on_categories' => $expense_budget_on_categories,
@@ -88,11 +88,11 @@ class BudgetTrackerReportController extends Controller
 
         $summary_budgets = $this->budgetTrackerReportService->getBudgetSummary($request);
 
-        $income_budget_on_categories = $this->budgetTrackerReportService->getBudgetReportOnCategories($request, 'income');  
+        $income_budget_on_categories  = $this->budgetTrackerReportService->getBudgetReportOnCategories($request, 'income');
         $expense_budget_on_categories = $this->budgetTrackerReportService->getBudgetReportOnCategories($request, 'expense');
 
         return view("reports.custom", [
-            'brief'                        => $this->budgetTrackerReportService->getTotalBriefBudget(),
+            'brief'                        => $this->budgetTrackerReportService->getTotalBriefBudget($request),
             'summary_budgets'              => SummaryBudgetResource::collection($summary_budgets),
             'income_budget_on_categories'  => $income_budget_on_categories,
             'expense_budget_on_categories' => $expense_budget_on_categories,

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Budgets')
 @section('breadcrumb', 'Budgets')
-@section('breadcrumb-info', 'User Lists')
+@section('breadcrumb-info', 'Budgets Lists')
 @section('content')
     <div class="container">
         <div class="row">
@@ -65,7 +65,7 @@
                                     <div class="card-toolbar mx-4">
                                         <div class="d-flex justify-content-center min-w-150px">
                                             <input type="date" name="start_date" id="start_date"
-                                                value="{{ $start_date }}"
+                                                value="{{ request('start_date') ?? '' }}"
                                                 class="form-control form-control-solid flatpickr-input" placeholder="Start">
                                         </div>
                                     </div>
@@ -74,7 +74,8 @@
                                     <label class="fs-7 fw-bold">End Date</label>
                                     <div class="card-toolbar mx-4">
                                         <div class="d-flex justify-content-center min-w-150px">
-                                            <input type="date" name="end_date" id="end_date" value="{{ $end_date }}"
+                                            <input type="date" name="end_date" id="end_date"
+                                                value="{{ request('end_date') ?? '' }}"
                                                 class="form-control form-control-solid flatpickr-input" placeholder="End">
                                         </div>
                                     </div>
@@ -163,6 +164,14 @@
     <script>
         $(document).ready(function() {
             $('#display').change(function() {
+                $('#search-filter-form').submit();
+            });
+
+            $('#start_date').on('change', function() {
+                $('#search-filter-form').submit();
+            });
+
+            $('#end_date').on('change', function() {
                 $('#search-filter-form').submit();
             })
         });

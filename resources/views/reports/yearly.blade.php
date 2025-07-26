@@ -11,6 +11,34 @@
                         </h3>
 
                     </div>
+                    <form method="get" action="{{ route('budget-reports.yearly') }}" id="search-filter-form"
+                        class="filter-clear-form">
+                        <div class="card-header border-0">
+                            <div class="card-title filter-style">
+                                <div class="filter-section">
+                                    <label class="fs-7 fw-bold">Year</label>
+                                    <div class="card-toolbar mx-4">
+                                        <div class="d-flex justify-content-center min-w-150px">
+                                            <select name="year" id="year" class="form-control">
+                                                @php
+                                                    $currentYear = now()->year;
+                                                    $startYear = 1980; 
+                                                    $endYear = $currentYear + 5;
+                                                @endphp
+                                                @for ($year = $startYear; $year <= $endYear; $year++)
+                                                    <option value="{{ $year }}"
+                                                        {{  (request('year') ?? $currentYear) == $year ? 'selected' : '' }}>
+                                                        {{ $year }}
+                                                    </option>
+                                                @endfor
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
                     <div class="card-content">
                         <x-budget-brief :brief="$brief" />
                     </div>
@@ -83,6 +111,11 @@
 @endsection
 @push('scripts')
     <script>
+        $(document).ready(function() {
+            $('#year').on('change', function() {
+                $('#search-filter-form').submit();
+            });
+        });
         const inputData = @json($summary_budgets)
 
         const allMonths = [

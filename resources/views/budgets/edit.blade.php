@@ -38,10 +38,18 @@
 
                             <div class="row mb-3">
                                 <div class="col-md-12">
-                                    <label for="processed_at" class="form-label">Choose Date & Time</label>
-                                    <input type="text" id="processed_at" name="processed_at" class="form-control"
-                                        placeholder="Select Date and Time" value="{{ old('processed_at') }}">
-                                    {!! $errors->first('processed_at', '<p class="help-block">:message</p>') !!}
+                                    <div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
+                                        <div class="list-title">
+                                            <label for="processed_at" class="form-label">Date</label>
+                                        </div>
+                                        <input type="datetime-local" name="processed_at" id="processed_at"
+                                            value="{{ old('processed_at') ?? Carbon\Carbon::parse($budget->processed_at)->format('Y-m-d H:i') }}"
+                                            class="form-control form-control-solid flatpickr-input" placeholder="Date">
+                                        @if ($errors->has('processed_at'))
+                                            <div class="" style="color: red;">{{ $errors->first('processed_at') }}
+                                            </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
 
