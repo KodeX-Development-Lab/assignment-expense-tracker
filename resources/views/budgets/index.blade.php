@@ -112,8 +112,8 @@
                                             <td><span
                                                     class="badge badge-{{ $item->type == 'income' ? 'success' : 'danger' }}">{{ $item->type }}</span>
                                             </td>
-                                            <td>{{ $item->type == 'income' ? $item->amount : '-' }}</td>
-                                            <td>{{ $item->type == 'expense' ? $item->amount : '-' }}</td>
+                                            <td>{{ $item->type == 'income' ? App\MoneyFormatter::format_money($item->amount) : '-' }}</td>
+                                            <td>{{ $item->type == 'expense' ? App\MoneyFormatter::format_money($item->amount) : '-' }}</td>
                                             <td>{{ $item->remark }}</td>
                                             <td class="sticky">
                                                 <a href="{{ route('budgets.edit', ['type' => $item->type, 'id' => $item->id]) }}"

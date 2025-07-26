@@ -7,7 +7,7 @@
             <div class="card-body">
                 
                 <div class="text-white fw-bolder fs-2 mb-2 mt-5">
-                    {{ $brief['total_income'] }}</div>
+                    {{ App\MoneyFormatter::format_money($brief['total_income']) }} </div>
                 <div class="fw-bold text-white">Total Income</div>
             </div>
             <!--end::Body-->
@@ -21,7 +21,7 @@
             <div class="card-body">
                 
                 <div class="text-gray-100 fw-bolder fs-2 mb-2 mt-5">
-                     {{ $brief['total_expense'] }}</div>
+                     {{ App\MoneyFormatter::format_money($brief['total_expense']) }}</div>
                 <div class="fw-bold text-gray-100">Total Expense</div>
             </div>
             <!--end::Body-->
@@ -38,7 +38,7 @@
                 
                 <div class="text-white fw-bolder fs-2 mb-2 mt-5">
 
-                     {{ $brief['balance'] }}
+                     {{ App\MoneyFormatter::format_money($brief['balance']) }}
                 </div>
                 <div class="fw-bold text-white">Balance</div>
             </div>

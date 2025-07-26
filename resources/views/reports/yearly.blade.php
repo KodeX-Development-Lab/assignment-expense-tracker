@@ -70,7 +70,7 @@
                                     <span class="transaction-source">{{ $item['category']->name }}</span>
 
                                 </div>
-                                <div class="col-2">{{ $item['amount'] }} </div>
+                                <div class="col-2">{{ App\MoneyFormatter::format_money($item['amount']) }} </div>
                                 <div class="col-2">{{ $item['percentage'] }} %</div>
                             </div>
                             <hr>
@@ -95,7 +95,7 @@
                                     <span class="transaction-source">{{ $item['category']->name }}</span>
 
                                 </div>
-                                <div class="col-2">{{ $item['amount'] }} </div>
+                                <div class="col-2">{{ App\MoneyFormatter::format_money($item['amount']) }} </div>
                                 <div class="col-2">{{ $item['percentage'] }} %</div>
                             </div>
                             <hr>

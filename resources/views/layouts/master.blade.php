@@ -4,10 +4,10 @@
 
 <head>
     <base href="">
-    <title>Pangea | @yield('title')</title>
+    <title>Expense Tracker | @yield('title')</title>
     <meta charset="utf-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <link rel="shortcut icon" href="{{ asset('backend/media/shortcut_icon.png') }}" />
+    {{-- <link rel="shortcut icon" href="{{ asset('backend/media/shortcut_icon.png') }}" /> --}}
     <!--begin::Fonts-->
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
@@ -28,7 +28,9 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css" />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--end::Global Stylesheets Bundle-->
     @stack('style')
@@ -104,16 +106,36 @@
                                     <div class="row">
                                         <div class="col-6 text-center">
                                             <a href="{{ route('budgets.create', ['type' => 'income']) }}"
-                                                class="me-3">
+                                                class="">
 
-                                                Income
+                                                <div class="text-success">
+                                                    <div class="mb-3">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                            height="16" fill="currentColor"
+                                                            class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z" />
+                                                        </svg>
+                                                    </div>
+                                                    <p class="">Income</p>
+                                                </div>
                                             </a>
                                         </div>
                                         <div class="col-6 text-center">
                                             <a href="{{ route('budgets.create', ['type' => 'expense']) }}"
-                                                class="ms-3">
+                                                class="">
 
-                                                Expense
+                                                <div class="text-danger">
+                                                    <div class="mb-3">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                            height="16" fill="currentColor"
+                                                            class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                                            <path
+                                                                d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73z" />
+                                                        </svg>
+                                                    </div>
+                                                    <p class="">Expense</p>
+                                                </div>
                                             </a>
                                         </div>
 
@@ -142,19 +164,7 @@
     <!--end::Root-->
     <!--end::Main-->
     <!--begin::Scrolltop-->
-    <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
-        <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
-        <span class="svg-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1"
-                    transform="rotate(90 13 6)" fill="currentColor" />
-                <path
-                    d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z"
-                    fill="currentColor" />
-            </svg>
-        </span>
-        <!--end::Svg Icon-->
-    </div>
+
     <!--end::Scrolltop-->
     <!--begin::Javascript-->
     <script>
@@ -187,7 +197,7 @@
 
     <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-   
+
 
     <script>
         document.addEventListener("wheel", function(event) {

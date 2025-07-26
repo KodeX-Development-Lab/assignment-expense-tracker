@@ -29,9 +29,9 @@
                                         </h5>
                                         <div>
                                             <span class="me-3">income: <span
-                                                    class="text-success">{{ $daily_budget->total_income }}</span></span>
+                                                    class="text-success">{{ App\MoneyFormatter::format_money($daily_budget->total_income) }}</span></span>
                                             <span>expense: <span
-                                                    class="text-danger">{{ $daily_budget->total_expense }}</span></span>
+                                                    class="text-danger">{{ App\MoneyFormatter::format_money($daily_budget->total_expense) }}</span></span>
                                         </div>
                                     </div>
 
@@ -48,7 +48,7 @@
                                                 <div class="text-muted small">{{ $item->remark }}</div>
                                             </div>
                                             <div class="col-2 amount">{{ $item->type == 'income' ? '+' : '-' }}
-                                                {{ $item->amount }}</div>
+                                                {{ App\MoneyFormatter::format_money($item->amount) }}</div>
                                             <div class="col-2">
                                                 <form method="POST"
                                                     action="{{ route('budgets.destroy', ['budget' => $item->id]) }}"

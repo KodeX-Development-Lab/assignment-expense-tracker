@@ -16,7 +16,7 @@
             </div>
         </div>
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-            <a href="{{ url('/admin') }}" class="d-lg-none">
+            <a href="{{ route('dashboard') }}" class="d-lg-none">
                 <img alt="Logo" src=" {{ asset('backend/media/shortcut_icon.png') }}" class="h-30px" />
             </a>
         </div>

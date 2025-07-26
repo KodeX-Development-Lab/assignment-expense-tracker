@@ -20,8 +20,8 @@
                     <div class="d-flex justify-content-between">
                         <p>
                             This month income: <span
-                                class="text-success">{{ $current_month_recent_budgets['total_income'] }}</span>,
-                            expense: <span class="text-danger">{{ $current_month_recent_budgets['total_expense'] }} </span>
+                                class="text-success">{{ App\MoneyFormatter::format_money($current_month_recent_budgets['total_income']) }}</span>,
+                            expense: <span class="text-danger">{{ App\MoneyFormatter::format_money($current_month_recent_budgets['total_expense']) }} </span>
                         </p>
                         <a href="{{ route('recent-budgets') }}" title="Edit Member">
                             <button class="btn btn-icon btn-active-light-primary btn btn-primary w-30px h-30px">
@@ -42,7 +42,7 @@
                                     <div class="text-muted small">{{ $item->remark }}</div>
                                 </div>
                                 <div class="col-2 amount">{{ $item->type == 'income' ? '+' : '-' }}
-                                    {{ $item->amount }}</div>
+                                    {{ App\MoneyFormatter::format_money($item->amount) }}</div>
                                 <div class="col-2">
                                     <form method="POST" action="{{ route('budgets.destroy', ['budget' => $item->id]) }}"
                                         class="deleteForm" style="display: inline;">
