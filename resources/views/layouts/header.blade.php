@@ -17,7 +17,8 @@
         </div>
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
             <a href="{{ route('dashboard') }}" class="d-lg-none">
-                <img alt="Logo" src=" {{ asset('backend/media/shortcut_icon.png') }}" class="h-30px" />
+                {{-- <img alt="Logo" src=" {{ asset('backend/media/shortcut_icon.png') }}" class="h-30px" /> --}}
+                <h3>{{ env("APP_NAME") }}</h3>
             </a>
         </div>
         <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">

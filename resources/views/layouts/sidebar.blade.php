@@ -6,8 +6,9 @@
     <div class="aside-logo flex-column-auto" id="kt_aside_logo">
         <!--begin::Logo-->
         <a href="{{ route('dashboard') }}">
-            <img alt="Logo" src="{{ asset('backend/media/pangea_Logo.png') }}" class="logo"
-                style="width: 100%; height: 50px;" />
+            {{-- <img alt="Logo" src="{{ asset('backend/media/pangea_Logo.png') }}" class="logo"
+                style="width: 100%; height: 50px;" /> --}}
+                <h3>{{ env("APP_NAME") }} </h3>
         </a>
         <!--end::Logo-->
         <!--begin::Aside toggler-->

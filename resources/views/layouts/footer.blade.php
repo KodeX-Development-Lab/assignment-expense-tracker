@@ -5,7 +5,7 @@
             <a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Pangea</a> --}}
         </div>
         <div class="menu menu-gray-600 menu-hover-primary fw-bold order-1">
-            <span class="text-dark fw-bold me-1">© {{ now()->year }} Pangea (HK) Co., Ltd. All rights reserved.</span>
+            <span class="text-dark fw-bold me-1">© {{ now()->year }} Htet Htet Zin. All rights reserved.</span>
         </div>
     </div>
 </div>
