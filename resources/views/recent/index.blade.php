@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('title', content: 'Current Month')
+@section('breadcrumb', 'Current Month')
 
 @section('content')
     <div class="container">

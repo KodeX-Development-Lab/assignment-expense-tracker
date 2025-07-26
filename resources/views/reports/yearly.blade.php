@@ -1,16 +1,13 @@
 @extends('layouts.master')
+@section('title', content: 'Yearly Report')
+@section('breadcrumb', 'Yearly Report')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Yearly Report
-                        </h3>
-
-                    </div>
+                    
                     <form method="get" action="{{ route('budget-reports.yearly') }}" id="search-filter-form"
                         class="filter-clear-form">
                         <div class="card-header border-0">
@@ -45,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-12">
 
                 <div class="card pt-5 px-3">

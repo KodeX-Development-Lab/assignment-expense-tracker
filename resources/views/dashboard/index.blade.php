@@ -1,4 +1,6 @@
 @extends('layouts.master')
+@section('title', 'Dashboard')
+@section('breadcrumb', 'Dashboard')
 
 @section('content')
     <div class="container">

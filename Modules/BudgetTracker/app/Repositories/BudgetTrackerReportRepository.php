@@ -55,11 +55,17 @@ class BudgetTrackerReportRepository
                 break;
 
             case 'custom':
-                $start_date = $request->start_date ?? Carbon::now()->format('Y-m-d');
-                $end_date   = $request->end_date ?? Carbon::now()->format('Y-m-d');
 
-                $query->whereDate('daily_budget_items.processed_at', '>=', $start_date);
-                $query->whereDate('daily_budget_items.processed_at', '<=', $end_date);
+                if ($request->start_date) {
+                    $start_date = $request->start_date ?? Carbon::now()->format('Y-m-d');
+                    $query->whereDate('daily_budget_items.processed_at', '>=', $start_date);
+                }
+
+                if ($request->end_date) {
+                    $end_date = $request->end_date ?? Carbon::now()->format('Y-m-d');
+                    $query->whereDate('daily_budget_items.processed_at', '<=', $end_date);
+                }
+
                 break;
         }
 

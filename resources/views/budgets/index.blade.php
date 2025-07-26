@@ -87,6 +87,7 @@
                             </div>
                         </div>
                     </form>
+                    <x-budget-brief :brief="$brief" />
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table align-middle table-row-bordered gy-4 gs-7">

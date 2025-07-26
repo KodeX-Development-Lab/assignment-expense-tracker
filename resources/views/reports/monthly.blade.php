@@ -1,16 +1,13 @@
 @extends('layouts.master')
+@section('title', content: 'Monthly Report')
+@section('breadcrumb', 'Monthly Report')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            Monthly Report
-                        </h3>
-
-                    </div>
+                    
                     <form method="get" action="{{ route('budget-reports.monthly') }}" id="search-filter-form"
                         class="filter-clear-form">
                         <div class="card-header border-0">
@@ -35,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-12">
 
                 <div class="card pt-5 px-3">
@@ -48,6 +45,9 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="card pt-5 px-3">
+                    <div class="card-header">
+                        Income
+                    </div>
                     <div class="mb-5">
                         <canvas id="income-category-pie"></canvas>
                     </div>
@@ -73,6 +73,9 @@
             </div>
             <div class="col-12 col-md-6">
                 <div class="card pt-5 px-3">
+                    <div class="card-header">
+                        Expense
+                    </div>
                     <div class="mb-5">
                         <canvas id="expense-category-pie"></canvas>
                     </div>

@@ -6,21 +6,37 @@ use Illuminate\Http\Request;
 use Modules\BudgetTracker\Http\Requests\BudgetTrackerBudgetRequest;
 use Modules\BudgetTracker\Models\BudgetTrackerCategory;
 use Modules\BudgetTracker\Models\DailyBudgetItem;
+use Modules\BudgetTracker\Services\BudgetTrackerReportService;
 use Modules\BudgetTracker\Services\BudgetTrackerService;
+use Modules\BudgetTracker\Services\Impl\BudgetTrackerReportServiceImpl;
 use Modules\BudgetTracker\Services\Impl\BudgetTrackerServiceImpl;
 
 class BudgetTrackerController extends Controller
 {
     private BudgetTrackerService $budgetTrackerService;
+    private BudgetTrackerReportService $budgetTrackerReportService;
 
-    public function __construct(BudgetTrackerServiceImpl $budgetTrackerService)
+    public function __construct(BudgetTrackerServiceImpl $budgetTrackerService, BudgetTrackerReportServiceImpl $budgetTrackerReportService)
     {
-        $this->budgetTrackerService = $budgetTrackerService;
+        $this->budgetTrackerService       = $budgetTrackerService;
+        $this->budgetTrackerReportService = $budgetTrackerReportService;
     }
 
     public function index(Request $request)
     {
+        $brief = null;
+
+        if ($request->start_date != null || $request->end_date != null) {
+            $request->merge([
+                'filter_type' => 'custom'
+            ]);
+            $brief = $this->budgetTrackerReportService->getTotalBriefBudget($request);
+        } else {
+            $brief = $this->budgetTrackerReportService->getAllBudgetsBrief();
+        }
+
         return view('budgets.index', [
+            'brief'   => $brief,
             'budgets' => $this->budgetTrackerService->findByParams($request),
         ]);
     }
@@ -42,7 +58,7 @@ class BudgetTrackerController extends Controller
     public function edit($type, $id)
     {
         return view('budgets.edit', [
-            'budget'       => DailyBudgetItem::with(['category'])->findOrFail($id),
+            'budget'     => DailyBudgetItem::with(['category'])->findOrFail($id),
             'categories' => BudgetTrackerCategory::where('type', $type)->get(),
         ]);
     }
