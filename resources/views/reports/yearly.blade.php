@@ -55,6 +55,9 @@
         <div class="row">
             <div class="col-12 col-md-6">
                 <div class="card pt-5 px-3">
+                    <div class="card-header">
+                        Income
+                    </div>
                     <div class="mb-5">
                         <canvas id="income-category-pie"></canvas>
                     </div>
@@ -80,6 +83,9 @@
             </div>
             <div class="col-12 col-md-6">
                 <div class="card pt-5 px-3">
+                    <div class="card-header">
+                        Expense
+                    </div>
                     <div class="mb-5">
                         <canvas id="expense-category-pie"></canvas>
                     </div>

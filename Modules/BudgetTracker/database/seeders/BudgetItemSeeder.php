@@ -66,7 +66,7 @@ class BudgetItemSeeder extends Seeder
             // Generate income (higher amounts)
             $totalIncome = 0;
             foreach ($incomeCategories as $incomeCategory) {
-                $amount = rand(1000, 5000); // Higher range for income
+                $amount = rand(100000, 300000); // Higher range for income
                 DailyBudgetItem::create([
                     'budget_id'    => $dailyBudget->id,
                     'type'         => BudgetTypes::INCOME->value,
@@ -86,9 +86,9 @@ class BudgetItemSeeder extends Seeder
 
                 // If this is the last expense category, use up to 80% of remaining
                 if ($expenseCategory === end($expenseCategories)) {
-                    $amount = rand(100, min(1000, $remaining * 0.8));
+                    $amount = rand(100000, min(200000, $remaining * 0.8));
                 } else {
-                    $amount = rand(100, min(1000, $remaining / (count($expenseCategories) - $key)));
+                    $amount = rand(100000, min(200000, $remaining / (count($expenseCategories) - $key)));
                 }
 
                 DailyBudgetItem::create([
@@ -118,7 +118,7 @@ class BudgetItemSeeder extends Seeder
                     'budget_id'    => $dailyBudget->id,
                     'type'         => $type->value,
                     'category_id'  => $categories[array_rand($categories)],
-                    'amount'       => $type === BudgetTypes::INCOME ? rand(500, 3000) : rand(100, 1000),
+                    'amount'       => $type === BudgetTypes::INCOME ? rand(100000, 200000) : rand(100, 1000),
                     'remark'       => ($type === BudgetTypes::INCOME ? "Income" : "Expense") . " on " . $randomDate->format('M j, Y'),
                     'processed_at' => $randomDate,
                 ]);

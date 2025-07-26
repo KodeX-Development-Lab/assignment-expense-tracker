@@ -21,7 +21,9 @@
                         <p>
                             This month income: <span
                                 class="text-success">{{ App\MoneyFormatter::format_money($current_month_recent_budgets['total_income']) }}</span>,
-                            expense: <span class="text-danger">{{ App\MoneyFormatter::format_money($current_month_recent_budgets['total_expense']) }} </span>
+                            expense: <span
+                                class="text-danger">{{ App\MoneyFormatter::format_money($current_month_recent_budgets['total_expense']) }}
+                            </span>
                         </p>
                         <a href="{{ route('recent-budgets') }}" title="Edit Member">
                             <button class="btn btn-icon btn-active-light-primary btn btn-primary w-30px h-30px">
@@ -63,7 +65,12 @@
             </div>
             <div class="col-md-12 col-lg-6">
                 <div class="card pt-5 px-3">
-                    <canvas id="income-expense-multi-line" style="height: 350px; width: 100%;"></canvas>
+                    <div class="card-header">
+                        This Year
+                    </div>
+                    <div class="card-content">
+                        <canvas id="income-expense-multi-line" style="height: 350px; width: 100%;"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,7 +78,7 @@
 @endsection
 @push('scripts')
     <script>
-        const inputData = @json($summary_budgets)
+        const inputData = @json($summary_budgets);
 
         const allMonths = [
             "January", "February", "March", "April", "May", "June",
@@ -90,7 +97,7 @@
             };
         });
 
-         const data = {
+        const data = {
             labels: filledData.map(data => data.label),
             datasets: [{
                     label: 'Income',
@@ -116,6 +123,5 @@
             document.getElementById("income-expense-multi-line"),
             table_config,
         );
-       
     </script>
 @endpush

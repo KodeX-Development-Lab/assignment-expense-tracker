@@ -65,6 +65,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                        $user = App\Models\User::with('role')->findOrFail(auth()->id());
+                                    @endphp
                                     @foreach ($categories as $item)
                                         <tr>
                                             <td style="padding-left: 10px;">{{ $loop->iteration }}</td>
@@ -84,7 +87,7 @@
                                                 @if($item->is_default_by_system)  <span class="badge badge-primary">Default</span>  @endif
                                             </td>
                                             <td class="sticky">
-                                                @if(!$item->is_default_by_system)
+                                                @if(($item->is_default_by_system && $user->role?->name == 'Admin') || $item->user_id == $user->id )
                                                 <a href="{{ route('categories.edit', ['category' => $item->id]) }}"
                                                     title="Edit">
                                                     <button

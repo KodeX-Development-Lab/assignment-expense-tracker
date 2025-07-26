@@ -43,14 +43,15 @@ class BudgetTrackerReportRepository
 
         switch ($filterType) {
             case 'monthly':
-                $month = $request->month ?? $now->format('m');
-                $year  = $request->year ?? $now->format('Y');
+                $input = $request->month ? Carbon::parse($request->month) : Carbon::now();
+                $month = $input->format('m');
+                $year  = $input->format('Y');
                 $query->whereYear('processed_at', $year)
                     ->whereMonth('processed_at', $month);
                 break;
 
             case 'yearly':
-                $year = $request->year ?? $now->format('Y');
+                $year = $request->year ?? Carbon::now()->format('Y');
                 $query->whereYear('processed_at', $year);
                 break;
 
@@ -131,14 +132,15 @@ class BudgetTrackerReportRepository
 
         switch ($filterType) {
             case 'monthly':
-                $month = $request->month ?? $now->format('m');
-                $year  = $request->year ?? $now->format('Y');
+                $input = $request->month ? Carbon::parse($request->month) : Carbon::now();
+                $month = $input->format('m');
+                $year  = $input->format('Y');
                 $query->whereYear('processed_at', $year)
                     ->whereMonth('processed_at', $month);
                 break;
 
             case 'yearly':
-                $year = $request->year ?? $now->format('Y');
+                $year = $request->year ?? Carbon::now()->format('Y');
                 $query->whereYear('processed_at', $year);
                 break;
 
@@ -196,8 +198,9 @@ class BudgetTrackerReportRepository
 
         switch ($filterType) {
             case 'monthly':
-                $month = $request->month ?? $now->format('m');
-                $year  = $request->year ?? $now->format('Y');
+                $input = $request->month ? Carbon::parse($request->month) : Carbon::now();
+                $month = $input->format('m');
+                $year  = $input->format('Y');
                 $query->whereYear('processed_at', $year)
                     ->whereMonth('processed_at', $month)
                     ->selectRaw('
@@ -212,7 +215,7 @@ class BudgetTrackerReportRepository
                 break;
 
             case 'yearly':
-                $year = $request->year ?? $now->format('Y');
+                $year = $request->year ?? Carbon::now()->format('Y');
                 $query->whereYear('processed_at', $year)
                     ->selectRaw('
                         MONTH(daily_budgets.date) as month,
@@ -259,14 +262,15 @@ class BudgetTrackerReportRepository
 
         switch ($filterType) {
             case 'monthly':
-                $month = $request->month ?? $now->format('m');
-                $year  = $request->year ?? $now->format('Y');
+                $input = $request->month ? Carbon::parse($request->month) : Carbon::now();
+                $month = $input->format('m');
+                $year  = $input->format('Y');
                 $query->whereYear('processed_at', $year)
                     ->whereMonth('processed_at', $month);
                 break;
 
             case 'yearly':
-                $year = $request->year ?? $now->format('Y');
+                $year = $request->year ?? Carbon::now()->format('Y');
                 $query->whereYear('processed_at', $year);
                 break;
 
