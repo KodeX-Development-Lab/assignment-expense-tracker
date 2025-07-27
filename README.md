@@ -57,7 +57,11 @@ The project should now be up and running! <br/>
 Access it via `http://localhost:8000` in your browser.
 
 ## Documentation
+Use Case and Database Design <br>
+https://drive.google.com/file/d/1GGgbMCxvu4jEOUHxJyliOc3vowf3ox8j/view?usp=sharing
 
+FLow Charts <br>
+https://miro.com/app/board/uXjVJaQRo3I=/?share_link_id=676265181938
 
 
 
