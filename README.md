@@ -56,6 +56,15 @@ Copy the `.env.example` file to create a new `.env` file:
 The project should now be up and running! <br/>
 Access it via `http://localhost:8000` in your browser.
 
+Sample Accounts:
+   ```sh
+   admin@gmail.com
+   admin@123
+
+   user@gmail.com
+   user@123
+   ```
+
 ## Documentation
 Use Case and Database Design <br>
 https://drive.google.com/file/d/1GGgbMCxvu4jEOUHxJyliOc3vowf3ox8j/view?usp=sharing
