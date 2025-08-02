@@ -3,6 +3,7 @@ namespace Modules\BudgetTracker\Database\Seeders;
 
 use App\Models\User;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Database\Seeder;
 use Modules\BudgetTracker\Enums\BudgetTypes;
 use Modules\BudgetTracker\Models\BudgetTrackerCategory;
@@ -49,9 +50,13 @@ class BudgetItemSeeder extends Seeder
 
         $user = User::first();
 
-// Define the date range
-        $startDate = Carbon::create(2025, 1, 1);
-        $endDate   = Carbon::create(2025, 7, 31);
+        DB::table("daily_budgets")->truncate();
+        DB::table("daily_budget_items")->truncate();
+
+        // Define the date range
+        $current_month = Carbon::now();
+        $startDate     = Carbon::create(2025, 1, 1);
+        $endDate       = $current_month;
 
         $incomeCategories  = BudgetTrackerCategory::where('type', BudgetTypes::INCOME->value)->pluck('id')->toArray();
         $expenseCategories = BudgetTrackerCategory::where('type', BudgetTypes::EXPENSE->value)->pluck('id')->toArray();
@@ -73,7 +78,7 @@ class BudgetItemSeeder extends Seeder
                     'category_id'  => $incomeCategory,
                     'amount'       => $amount,
                     'remark'       => "Income for " . $month->format('F Y'),
-                    'processed_at' => $month,
+                    'processed_at' => Carbon::create($month->year, $month->month, $month->day, 10, 0, 0),
                 ]);
                 $totalIncome += $amount;
             }
@@ -97,7 +102,7 @@ class BudgetItemSeeder extends Seeder
                     'category_id'  => $expenseCategory,
                     'amount'       => $amount,
                     'remark'       => "Expense for " . $month->format('F Y'),
-                    'processed_at' => $month,
+                    'processed_at' => Carbon::create($month->year, $month->month, $month->day, 10, 0, 0),
                 ]);
                 $totalExpenses += $amount;
             }
@@ -114,13 +119,18 @@ class BudgetItemSeeder extends Seeder
                 $type       = $i % 2 === 0 ? BudgetTypes::INCOME : BudgetTypes::EXPENSE;
                 $categories = $type === BudgetTypes::INCOME ? $incomeCategories : $expenseCategories;
 
+                $dailyBudget = DailyBudget::firstOrCreate([
+                    'user_id' => $user->id,
+                    'date'    => $randomDate->format('Y-m-d'),
+                ]);
+
                 DailyBudgetItem::create([
                     'budget_id'    => $dailyBudget->id,
                     'type'         => $type->value,
                     'category_id'  => $categories[array_rand($categories)],
                     'amount'       => $type === BudgetTypes::INCOME ? rand(100000, 200000) : rand(100, 1000),
                     'remark'       => ($type === BudgetTypes::INCOME ? "Income" : "Expense") . " on " . $randomDate->format('M j, Y'),
-                    'processed_at' => $randomDate,
+                    'processed_at' => Carbon::create($randomDate->year, $randomDate->month, $randomDate->day, 10, 0, 0),
                 ]);
             }
         }

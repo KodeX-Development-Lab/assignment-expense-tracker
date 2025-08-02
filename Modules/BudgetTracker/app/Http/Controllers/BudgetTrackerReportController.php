@@ -27,7 +27,7 @@ class BudgetTrackerReportController extends Controller
         return response()->json([
             'status'  => true,
             'data'    => [
-                'brief'                        => $this->budgetTrackerReportService->getTotalBriefBudget(),
+                'brief'                        => $this->budgetTrackerReportService->getTotalBriefBudget($request),
                 'current_month_recent_budgets' => $this->budgetTrackerReportService->getRecentForCurrentMonth(),
                 'summary_budgets'              => SummaryBudgetResource::collection($summary_budgets),
             ],

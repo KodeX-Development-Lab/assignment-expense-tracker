@@ -18,13 +18,13 @@ class BudgetTrackerCategoryRepository
                         ->orWhere('user_id', auth()->id());
                 });
 
-                if ($request->type != null && $request->type != '') {
+                if ($request->type != null && $request->type != 'All') {
                     $query->where('type', $request->type);
                 }
 
-                // if ($search) {
-                //     $query->where('name', 'LIKE', "%$search%");
-                // }
+                if ($search != '') {
+                    $query->where('name', 'LIKE', "%$search%");
+                }
             })
             ->orderByDesc('id')
             ->paginate($perPage);
