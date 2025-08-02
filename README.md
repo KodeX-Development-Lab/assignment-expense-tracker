@@ -46,7 +46,7 @@ Copy the `.env.example` file to create a new `.env` file:
 ## Database Migrating and Running the Application
 
    ```sh
-    php artisan migrate:fresh
+    php artisan migrate
     php artisan db:seed --class=UserSeeder
     php artisan module:seed BudgetTracker
 
