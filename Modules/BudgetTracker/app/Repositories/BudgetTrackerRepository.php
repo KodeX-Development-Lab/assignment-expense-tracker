@@ -18,7 +18,7 @@ class BudgetTrackerRepository
             return $category_id;
         })->values();
 
-        $data = DailyBudgetItem::with(['category' => function($q) {
+        $data = DailyBudgetItem::with(['category' => function ($q) {
             $q->withTrashed();
         }])
             ->join('daily_budgets', 'daily_budgets.id', 'daily_budget_items.budget_id')
@@ -88,7 +88,7 @@ class BudgetTrackerRepository
 
     public function findById($id)
     {
-        return DailyBudgetItem::with(['category'=> function($q) {
+        return DailyBudgetItem::with(['category' => function ($q) {
             $q->withTrashed();
         }])->findOrFail($id);
     }

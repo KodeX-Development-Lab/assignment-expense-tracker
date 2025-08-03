@@ -28,7 +28,7 @@ class BudgetTrackerController extends Controller
 
         if ($request->start_date != null || $request->end_date != null) {
             $request->merge([
-                'filter_type' => 'custom'
+                'filter_type' => 'custom',
             ]);
             $brief = $this->budgetTrackerReportService->getTotalBriefBudget($request);
         } else {
@@ -57,10 +57,12 @@ class BudgetTrackerController extends Controller
 
     public function edit($type, $id)
     {
-        $user = auth()->user();
-        $budget = DailyBudgetItem::with(['category', 'budget'])->findOrFail($id);
+        $user   = auth()->user();
+        $budget = DailyBudgetItem::with(['category' => function ($q) {
+            $q->withTrashed();
+        }, 'budget'])->findOrFail($id);
 
-        if($user->id != $budget->budget?->user_id) {
+        if ($user->id != $budget->budget?->user_id) {
             return abort(403);
         }
 
@@ -72,10 +74,12 @@ class BudgetTrackerController extends Controller
 
     public function update(BudgetTrackerBudgetRequest $request, $id)
     {
-        $user = auth()->user();
-        $budget = DailyBudgetItem::with(['category', 'budget'])->findOrFail($id);
+        $user   = auth()->user();
+        $budget = DailyBudgetItem::with(['category' => function ($q) {
+            $q->withTrashed();
+        }, 'budget'])->findOrFail($id);
 
-        if($user->id != $budget->budget?->user_id) {
+        if ($user->id != $budget->budget?->user_id) {
             return abort(403);
         }
 
@@ -90,13 +94,15 @@ class BudgetTrackerController extends Controller
      */
     public function destroy($id)
     {
-        $user = auth()->user();
-        $budget = DailyBudgetItem::with(['category', 'budget'])->findOrFail($id);
+        $user   = auth()->user();
+        $budget = DailyBudgetItem::with(['category' => function ($q) {
+            $q->withTrashed();
+        }, 'budget'])->findOrFail($id);
 
-        if($user->id != $budget->budget?->user_id) {
+        if ($user->id != $budget->budget?->user_id) {
             return abort(403);
         }
-        
+
         $item = $this->budgetTrackerService->findById($id);
         $this->budgetTrackerService->delete($item);
 

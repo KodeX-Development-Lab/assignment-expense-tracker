@@ -114,6 +114,7 @@ class BudgetTrackerReportRepository
             ->whereMonth('daily_budget_items.processed_at', $now->format('m'))
             ->whereYear('daily_budget_items.processed_at', $now->format('Y'))
             ->orderByDesc('daily_budget_items.processed_at')
+            ->select('daily_budget_items.*')
             ->take(10)
             ->get();
 
