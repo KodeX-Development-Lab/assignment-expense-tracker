@@ -50,6 +50,8 @@ class BudgetTrackerCategoryController extends Controller
     {
         $category = $this->budgetTrackerCategoryService->findById($id);
 
+        $this->budgetTrackerCategoryService->update($category, $request->toArray());
+
         return redirect()->route('categories.index')->with('flash_message', 'Updated!');
     }
 
