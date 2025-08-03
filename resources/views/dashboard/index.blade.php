@@ -19,11 +19,11 @@
                 <div class="card pt-5 px-3">
                     <div class="d-flex justify-content-between">
                         <p>
-                            <h3>This month</h3> income: <span
-                                class="text-success">{{ App\MoneyFormatter::format_money($current_month_recent_budgets['total_income']) }}</span>,
-                            expense: <span
-                                class="text-danger">{{ App\MoneyFormatter::format_money($current_month_recent_budgets['total_expense']) }}
-                            </span>
+                        <h3>This month</h3> income: <span
+                            class="text-success">{{ App\MoneyFormatter::format_money($current_month_recent_budgets['total_income']) }}</span>,
+                        expense: <span
+                            class="text-danger">{{ App\MoneyFormatter::format_money($current_month_recent_budgets['total_expense']) }}
+                        </span>
                         </p>
                         <a href="{{ route('recent-budgets') }}" title="Edit Member">
                             <button class="btn btn-icon btn-active-light-primary btn btn-primary w-30px h-30px">
