@@ -18,7 +18,9 @@ class BudgetTrackerRepository
             return $category_id;
         })->values();
 
-        $data = DailyBudgetItem::withTrashed(['category'])
+        $data = DailyBudgetItem::with(['category' => function($q) {
+            $q->withTrashed();
+        }])
             ->join('daily_budgets', 'daily_budgets.id', 'daily_budget_items.budget_id')
             ->where('daily_budgets.user_id', auth()->id())
             ->where(function ($query) use ($request, $category_ids, $search) {
@@ -86,7 +88,9 @@ class BudgetTrackerRepository
 
     public function findById($id)
     {
-        return DailyBudgetItem::withTrashed(['category'])->findOrFail($id);
+        return DailyBudgetItem::with(['category'=> function($q) {
+            $q->withTrashed();
+        }])->findOrFail($id);
     }
 
     public function store(array $data)

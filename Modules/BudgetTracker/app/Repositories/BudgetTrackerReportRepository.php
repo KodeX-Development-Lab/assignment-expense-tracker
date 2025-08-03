@@ -106,7 +106,9 @@ class BudgetTrackerReportRepository
         $totalIncome  = (float) ($results->total_income ?? 0);
         $totalExpense = (float) ($results->total_expense ?? 0);
 
-        $items = DailyBudgetItem::withTrashed(['category'])
+        $items = DailyBudgetItem::with(['category' => function ($q) {
+            $q->withTrashed();
+        }])
             ->join('daily_budgets', 'daily_budgets.id', 'daily_budget_items.budget_id')
             ->where('daily_budgets.user_id', auth()->id())
             ->whereMonth('daily_budget_items.processed_at', $now->format('m'))
@@ -176,7 +178,9 @@ class BudgetTrackerReportRepository
         $month   = $request->month ?? $now->format('m');
         $year    = $request->year ?? $now->format('Y');
 
-        $data = DailyBudget::withTrashed(['items.category'])
+        $data = DailyBudget::with(['items.category' => function ($q) {
+            $q->withTrashed();
+        }])
             ->where('daily_budgets.user_id', auth()->id())
             ->orderByDesc('daily_budgets.date')
             ->where(function ($query) use ($month, $year) {
@@ -255,7 +259,9 @@ class BudgetTrackerReportRepository
         $filterType = $request->filter_type ?? 'monthly';
         $now        = Carbon::now();
 
-        $query = DailyBudgetItem::withTrashed(['category'])->join('daily_budgets', 'daily_budgets.id', 'daily_budget_items.budget_id')
+        $query = DailyBudgetItem::with(['category' => function ($q) {
+            $q->withTrashed();
+        }])->join('daily_budgets', 'daily_budgets.id', 'daily_budget_items.budget_id')
             ->where('daily_budgets.user_id', auth()->id())
             ->where('daily_budget_items.type', $budgetType)
             ->groupBy('daily_budget_items.category_id');
